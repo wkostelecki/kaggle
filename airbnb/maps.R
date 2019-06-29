@@ -44,14 +44,15 @@ g = ggmap(map) +
                identity,
              aes(x = longitude, y = latitude,
                  colour = index),
-             size = 1,
+             size = 2,
              shape = 16,
              alpha = 0.2) +
   facet_wrap(~ room_type) +
-  scale_colour_gradientn("Price", colours = ezplot::ez_jet(100)) +
-  theme_minimal() +
+  scale_colour_gradientn("Price Index", colours = ezplot::ez_jet(100)) +
+  theme_minimal(base_size = 18)
   # theme(axis.text = element_blank(),
   #       axis.ticks = element_blank()) +
-  theme(legend.position = "none")
+  # theme(legend.position = "none")
 g
 
+ezplot::ez_png(g, "price_map.png", height = 500, width = 1000)
